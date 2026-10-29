@@ -18,6 +18,12 @@ BASE_DIR = Path(__file__).resolve().parent
 FILEIRAS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 COLUNAS = list(range(1,21))
 
+def selecionar_cadeira(cadeira):
+    if cadeira.cget("fg_color") == "#745B6B":
+        cadeira.configure(fg_color="#C5AAB2")
+    else:
+        cadeira.configure(fg_color="#745B6B")
+    
 def criar_cadeiras(frame):
     botoes = []
 
@@ -28,10 +34,14 @@ def criar_cadeiras(frame):
                 text=f"{letra}{numero}",
                 width=48,
                 height=40,
-                fg_color="#DBACBB",
+                fg_color="#C5AAB2",
                 hover_color="#8C6980",
                 text_color="#1A1518",
                 corner_radius=8
+            )
+
+            cadeira.configure(
+                command=lambda c=cadeira: selecionar_cadeira(c)
             )
 
             cadeira.grid(
@@ -109,7 +119,7 @@ titulo = ctk.CTkLabel(
     fg_color="transparent",
     text_color="#D19ABE"
 )
-titulo.pack(pady=(10, 10), anchor="w", padx=35)
+titulo.pack(pady=(10, 10), anchor="w", padx=25)
 
 btn_historico = ctk.CTkButton(
     frame_inicial,
@@ -123,7 +133,7 @@ btn_historico = ctk.CTkButton(
     command=mostrar_historico
 )
 
-btn_historico.place(x=1500, anchor="e", y=40)
+btn_historico.place(x=1518, anchor="e", y=40)
 
 label_inicio = ctk.CTkLabel(
     frame_inicial,
@@ -131,7 +141,16 @@ label_inicio = ctk.CTkLabel(
     font=("Arial", 18, "bold"),
     text_color="#F7D9ED"
 )
-label_inicio.place(x=1350, anchor="e", y=40)
+label_inicio.place(x=1360, anchor="e", y=40)
+
+label_escolha = ctk.CTkLabel(
+    frame_inicial,
+    text="ESCOLHA SUA SALA: ",
+    font=("Arial", 20, "bold"),
+    text_color="#FFFFFF"
+)
+
+label_escolha.place(x=38, y=640)
 
 #------------------------------------------------------------------------------------------------------------------------
 #imagens
@@ -178,7 +197,7 @@ label_um_cabra_bom_de_bola_imagem.grid(row=0, column=4, padx=10, pady=20)
 #--------------------------------------------------------------------------------------------------------------------------------------
 #frame odisseia
 frame_odisseia = ctk.CTkFrame(frame_inicial, height=130, width=270, fg_color="#D19ABE")
-frame_odisseia.place(x=35, y=640)
+frame_odisseia.place(x=35, y=680)
 
 frame_odisseia.pack_propagate(False)
 
@@ -199,7 +218,7 @@ botao_odisseia.place(x=15, y=70)
 
 #frame obsessao
 frame_obsessao = ctk.CTkFrame(frame_inicial, height=130, width=270, fg_color="#CC91AE")
-frame_obsessao.place(x=335, y=640)
+frame_obsessao.place(x=335, y=680)
 
 frame_obsessao.pack_propagate(False)
 
@@ -220,7 +239,7 @@ botao_obsessao.place(x=15, y=70)
 
 #frame homem aranha
 frame_homem_aranha = ctk.CTkFrame(frame_inicial, height=130, width=270, fg_color="#B8789C")
-frame_homem_aranha.place(x=635, y=640)
+frame_homem_aranha.place(x=635, y=680)
 
 frame_homem_aranha.pack_propagate(False)
 
@@ -241,7 +260,7 @@ botao_homem_aranha.place(x=15, y=70)
 
 #frame toy story
 frame_toy_story_5 = ctk.CTkFrame(frame_inicial, height=130, width=270, fg_color="#A4608A")
-frame_toy_story_5.place(x=935, y=640)
+frame_toy_story_5.place(x=935, y=680)
 
 frame_toy_story_5.pack_propagate(False)
 
@@ -262,7 +281,7 @@ botao_toy_story_5.place(x=15, y=70)
 
 #frame um cabra bom de bola
 frame_um_cabra_bom_de_cabra = ctk.CTkFrame(frame_inicial, height=130, width=270, fg_color="#8F4B77")
-frame_um_cabra_bom_de_cabra.place(x=1235, y=640)
+frame_um_cabra_bom_de_cabra.place(x=1235, y=680)
 
 frame_um_cabra_bom_de_cabra.pack_propagate(False)
 
